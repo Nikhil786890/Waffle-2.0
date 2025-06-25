@@ -8,7 +8,8 @@ const app =express();
 
 app.use(cors());
 
-const port =5000;
+const port = process.env.PORT || 5000;
+
 //port 5000 as on port 3000 client app will run
 
 
