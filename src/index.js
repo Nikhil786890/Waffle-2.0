@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import { createRoot } from 'react-dom/client';
+import App from "./App"
+
+
+//the render method can only take one html element,this is not used here as the react version is above 18
+// ReactDOM.render(
+//   <div>
+//     <h1>Hello world</h1>
+//     <p>this is a paragraph</p>
+//   </div>,
+//   document.getElementById("root")
+// );
+
+
+const root = createRoot(document.getElementById("root"));//this line finds the eleemnt with id as root in index.html
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  < App />
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//the border radius makes the border of the input field look curved
+//in jsx ir react the class name for attributes are given in camelcasing

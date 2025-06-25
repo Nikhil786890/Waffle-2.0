@@ -1,0 +1,61 @@
+body{
+    background-color: #9c6130;
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+h1{
+    font-weight: 500;
+    font-size: 100px;
+}
+
+/*the postion of search container is relative becoz both the items in the outer box dive must be dependent on the outer box not on any other elements
+*/
+
+
+
+.outer_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   justify-content:center ;
+   padding-top: 100px;
+}
+.search_container{
+   position: relative;
+
+}
+
+
+.search_box{
+    width: 500px;   
+    height: 40px;
+    border-radius: 15px;
+}
+
+/* the postion here is  absolute so that the dropdown should be below the input field ,the max height here allow that the suggestion must not go outside the the viewpoint,overflow y auto so that the suggestions can be esaily seen while scrolling in y axis */
+ul{
+    position:absolute;
+    top: 100%;
+    left: 0%;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.dropdown{
+    color:white;
+    height: 30px;
+    width: 500px;
+    position: relative;
+
+}
+button{
+    border-radius: 15px;
+    
+}
+
+#upper_box{
+    height: 200px;
+    background-color: bisque;
+
+}
+
+
