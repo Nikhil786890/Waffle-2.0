@@ -20,9 +20,8 @@ function App() {
   useEffect(() => {
     if (typedQuery.trim()) {
       // Perform API call to your Express server
-      axios
-        .get(`http://localhost:5000/openlibrary?q=${typedQuery.trim()}`)
-        .then((response) => {
+      axios.get(`${process.env.REACT_APP_API_URL}/openlibrary?q=${typedQuery.trim()}`)
+           .then((response) => {
           setOpenLibrarySuggestions(response.data);
           setFilteredSuggestions(response.data);
         })
