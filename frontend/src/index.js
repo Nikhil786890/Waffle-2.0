@@ -2,6 +2,7 @@
 import React from "react";
 import { createRoot } from 'react-dom/client';
 import App from "./App"
+import "./index.css";
 
 
 //the render method can only take one html element,this is not used here as the react version is above 18
