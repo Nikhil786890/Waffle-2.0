@@ -12,12 +12,36 @@ app.get("/openlibrary", async (req, res) => {
   if (!q) return res.status(400).json({ error: "Query is missing" });
 
   try {
-    const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}`);
+    const response = await fetch(
+      `https://openlibrary.org/search.json?q=${encodeURIComponent(q)}`
+    );
+
     const data = await response.json();
-    const simplified = data.docs.map((item) => item.title);
+
+    const simplified = data.docs
+      .filter((item) => item.title)
+      .map((item) => {
+        // Priority 1: work key
+        let link =
+          item.key ||
+          (item.work_key?.[0]
+            ? item.work_key[0]
+            : item.edition_key?.[0]
+            ? `/books/${item.edition_key[0]}`
+            : null);
+
+        return {
+          title: item.title,
+          key: link
+        };
+      })
+      .filter((item) => item.key); // remove any null results
+
+    console.log("RESULT:", simplified.slice(0, 5));
+
     res.json(simplified);
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching from OpenLibrary:", err);
     res.status(500).json({ error: "Failed to fetch from Open Library" });
   }
 });
